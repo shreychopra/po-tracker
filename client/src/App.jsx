@@ -10,7 +10,7 @@ import {
   ResponsiveContainer
 } from "recharts"
 
-const API = "http://localhost:4000"
+const API = import.meta.env.VITE_API_URL || "http://localhost:4000"
 
 const STATUSES = ["Draft", "Sent", "Confirmed", "In Transit", "Delivered", "Cancelled"]
 
