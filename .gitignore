@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Environment variables — never commit these
+.env
+
+# Build output
+dist/
+
+# Mac system files
+.DS_Store
+
+# Prisma
+prisma/migrations/dev.db

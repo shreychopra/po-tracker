@@ -1,0 +1,41 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Supplier {
+  id           Int             @id @default(autoincrement())
+  name         String
+  contact      String?
+  email        String?
+  category     String?
+  paymentTerms String?
+  createdAt    DateTime        @default(now())
+  orders       PurchaseOrder[]
+}
+
+model PurchaseOrder {
+  id             Int        @id @default(autoincrement())
+  poNumber       String     @unique @default(cuid())
+  supplierId     Int
+  supplier       Supplier   @relation(fields: [supplierId], references: [id])
+  status         String     @default("Draft")
+  expectedDate   DateTime?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  lineItems      LineItem[]
+}
+
+model LineItem {
+  id          Int           @id @default(autoincrement())
+  orderId     Int
+  order       PurchaseOrder @relation(fields: [orderId], references: [id])
+  description String
+  quantity    Int
+  unitCost    Float
+}
