@@ -2,6 +2,9 @@
 
 A full-stack purchase order and supplier management tool built with React, Node.js, Express, PostgreSQL, and Prisma.
 
+## Live Demo
+🔗 [po-tracker-phi.vercel.app](https://po-tracker-phi.vercel.app)
+
 ## Features
 - Supplier directory — add, view, delete suppliers
 - Purchase order creation with dynamic line items
