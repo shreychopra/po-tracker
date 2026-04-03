@@ -4,8 +4,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider   = "postgresql"
+  url       = env("DATABASE_URL")   ← pooler, for queries
+  directUrl = env("DIRECT_URL")    ← direct, for migrations
 }
 
 model Supplier {
